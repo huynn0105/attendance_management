@@ -105,9 +105,10 @@ class AdminProvider with ChangeNotifier {
           attendancesOfUser.fold<double>(0.0, (previousValue, element) {
         DateTime timeEnd = element.timeEnd ?? DateTime.now();
         Duration dr = timeEnd.difference(element.timeStart!);
-        double hour = dr.inHours.toDouble() + (dr.inMinutes / 60);
+        double hour = dr.inMinutes/60;
         return previousValue + hour;
       });
+      
       salaries.add(
         Salary(
           no: user.no,
